@@ -1,8 +1,7 @@
-add_executable(main main.cpp)
+file(GLOB SUBDIRS ${CMAKE_CURRENT_SOURCE_DIR}/*)
 
-target_link_libraries(main PUBLIC 
-	Qt6::Core
-	Qt6::Widgets
-)
-
-
+foreach(SUBDIR ${SUBDIRS})
+    if(IS_DIRECTORY ${SUBDIR})
+        add_subdirectory(${SUBDIR})
+    endif()
+endforeach() 
